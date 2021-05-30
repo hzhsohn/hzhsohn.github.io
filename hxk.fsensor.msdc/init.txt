@@ -1,0 +1,5 @@
+{
+"init_page":"index.html",
+"devflag":"hxk.fsensor",
+"msd_load":"hxk.fsensor-v1.lua"
+}

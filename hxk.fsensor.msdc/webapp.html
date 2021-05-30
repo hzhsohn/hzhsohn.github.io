@@ -1,0 +1,207 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset=utf-8 /> 
+<meta name="viewport" content="width=620" /> 
+<title>Control Demo</title> 
+<style> 
+#chat { width: 97%; }
+.them { font-weight: bold; }
+.them:before { content: 'Recv: '; color:#036; font-size: 12px; }
+#log {
+overflow: auto;
+height: 200px;
+list-style: none;
+padding: 0;
+border:dotted;
+border-color:#CCC;
+}
+#log li {
+border-top: 1px solid #ccc;
+margin: 0;
+padding: 10px 0;
+}
+li {
+margin-bottom: 10px;
+}
+.tit{
+height:36px; 
+background:#39F;
+color:#FFF;
+padding:10px;
+}
+#t1{
+font-weight: bold;
+font-size:30px;
+float:left;
+margin-left:10px;
+}
+#t2{
+font-size:14px;
+float:right;
+margin-top:16px;
+margin-right:10px;
+}
+.m1{
+padding:5px;
+}
+.m2{
+padding-left:5px;
+}
+.m1 ul{
+padding-top:5px;
+padding-left:20px;
+}
+
+#a1:before { content: '温度: '; color:#036; font-size: 22px; }
+#a2:before { content: '湿度: '; color:#036; font-size: 22px; }
+#a3:before { content: '水位: '; color:#036; font-size: 22px; }
+#a4:before { content: '电表: '; color:#036; font-size: 22px; }
+</style> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+</head> 
+<body> 
+<section id="wrapper">
+  <table width="100%" height="550" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <td valign="top" class="m2"><div class="tit" >
+        <div id=t1>通断控制器</div>
+        2
+      </div>
+        <hr />
+        <article>
+            <!--<ul id="log"></ul>-->
+            <h3><div style="background:#690;color:#FFF">状态</div></h3>
+            <div id=a1></div>
+            <div id=a2></div>
+            <div id=a3></div>
+            <div id=a4></div>
+            <h3><div style="background:#E83; color:#FFF">操作</div></h3>
+            <hr />
+            <input type="button" id="sndbtn1" value="1 路" style="width:100px; height:70px;"/>
+            <input type="button" id="sndbtn2" value="2 路" style="width:100px; height:70px;" />
+            <br>
+            <input type="button" id="sndbtn3" value="3 路" style="width:100px; height:70px;"/>
+            <input type="button" id="sndbtn4" value="4 路" style="width:100px; height:70px;"/>
+            <br>
+            <input type="button" id="sndbtn5" value="5 路" style="width:100px; height:70px;"/>
+            <input type="button" id="sndbtn6" value="6 路" style="width:100px; height:70px;"/>
+            <br>
+            
+        </article></td>
+    </tr>
+  </table>
+<script>
+var b1 =0; 
+var b2 =0; 
+var b3 =0; 
+var b4 =0; 
+var b5 =0; 
+var b6 =0; 
+
+
+$("sndbtn1").style.color  ="white";
+$("sndbtn2").style.color  ="white";
+$("sndbtn3").style.color  ="white";
+$("sndbtn4").style.color  ="white";
+$("sndbtn5").style.color  ="white";
+$("sndbtn6").style.color  ="white";
+$("sndbtn1").style.backgroundColor  ="grey";
+$("sndbtn2").style.backgroundColor  ="grey";
+$("sndbtn3").style.backgroundColor  ="grey";
+$("sndbtn4").style.backgroundColor  ="grey";
+$("sndbtn5").style.backgroundColor  ="grey";
+$("sndbtn6").style.backgroundColor  ="grey";
+
+function $(d)
+{
+	return document.getElementById(d);
+}
+
+function hxkXMapRecv(cmd,message)
+{  
+ 	if(cmd=="j")
+	{
+		jj=JSON.parse(message);
+		/*
+		var dt=new Date();
+		h = dt.getHours()+':';
+		m = dt.getMinutes()+':';
+		s = dt.getSeconds(); 
+		str='['+h+m+s+'] '+message;  
+		log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
+		log.scrollTop=log.scrollHeight;
+		*/
+		b1 = jj.kg.s[0];
+		b2 = jj.kg.s[1];
+		b3 = jj.kg.s[2];
+		b4 = jj.kg.s[3];
+		b5 = jj.kg.s[4];
+		b6 = jj.kg.s[5];
+	
+		$("sndbtn1").style.backgroundColor  =b1?"green":"grey";
+		$("sndbtn2").style.backgroundColor  =b2?"green":"grey";
+		$("sndbtn3").style.backgroundColor  =b3?"green":"grey";
+		$("sndbtn4").style.backgroundColor  =b4?"green":"grey";
+		$("sndbtn5").style.backgroundColor  =b5?"green":"grey";
+		$("sndbtn6").style.backgroundColor  =b6?"green":"grey";
+		
+		sth=jj.tempe_humid.s[0].split(",");
+		$("a1").innerHTML=sth[0]+"度";
+		$("a2").innerHTML=sth[1]+"%";
+		
+		$("a3").innerHTML=jj.water.s[0]+"pv";
+		$("a4").innerHTML=jj.electric.s[0]+"瓦";
+		
+	}
+};
+
+sndbtn1.onclick=function(event) {
+	if(b1)
+	{hxkXMapScene("S10","");}
+	else
+	{hxkXMapScene("S11","");}
+};
+sndbtn2.onclick=function(event) {	
+	if(b2)
+	{hxkXMapScene("S20","");}
+	else
+	{hxkXMapScene("S21","");}
+};
+
+sndbtn3.onclick=function(event) {
+	if(b3)
+	{hxkXMapScene("S30","");}
+	else
+	{hxkXMapScene("S31","");}
+};
+sndbtn4.onclick=function(event) {	
+	if(b4)
+	{	hxkXMapScene("S40","");}
+	else
+	{hxkXMapScene("S41","");}
+};
+
+sndbtn5.onclick=function(event) {
+	if(b5)
+	{hxkXMapScene("S50","");}
+	else
+	{hxkXMapScene("S51","");}
+};
+sndbtn6.onclick=function(event) {	
+	if(b6)
+	{	hxkXMapScene("S60","");}
+	else
+	{hxkXMapScene("S61","");}
+};
+//读取状态
+function init() {
+	hxkXMapSend("state","");
+};
+setTimeout(init,100);
+
+</script>
+</section> 
+</body> 
+</html>
