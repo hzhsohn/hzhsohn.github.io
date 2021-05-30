@@ -1,0 +1,72 @@
+<style>
+.darkBox{
+            width:120px;
+            height:35px;
+            position:relative;
+            margin:auto;
+			float:right;
+        }
+        .darkBox:before{
+            content:"ON";
+            width:40px;
+            height:35px;
+            position:absolute;
+            left:0;
+            top:10;
+            z-index:1;
+			font-weight:bold;
+			color:#FFF;
+        }
+        .darkBox:after{
+            content:"OFF";
+            width:40px;
+            height:35px;
+            position:absolute;
+            right:0;
+            top:10;
+			font-weight:bold;
+			color:#FFF;
+        }
+        input[type=checkbox]{
+            position:absolute;
+            opacity: 0;
+        }
+        input[type=checkbox]:checked+label:before{
+            background:#3ccd58;
+        }
+        input[type=checkbox]:checked+label:after{
+            left:40px;
+        }
+        label{
+            width:40px;
+            height:45px;
+            position: relative;
+        }
+        label:before{
+            content:"";
+            width:80px;
+            height:45px;
+            position:absolute;
+            /*left:0;*/
+            background:#fe5453;
+        }
+        label:after{
+            content:"";
+            width:40px;
+            height:45px;
+            position:absolute;
+            left:0;
+            background:#b1b1b1;
+            z-index:2;
+            transition:all 0.2s ease;
+        }
+</style>
+<div>
+<div style="float:left"><img src="onoff.png" width="64"/>asdfdddddddddddddddddd
+<div class="darkBox">    
+    <input type="checkbox" id="inp" value=¡°inp¡± name="inp"/>
+    <label for="inp"></label>
+</div>
+</div>
+<br style="float:none" />
+</div>
