@@ -32,7 +32,7 @@ function module_init()
  initStr=sjson.attr(initStr,"release","true");
  initStr=sjson.attr(initStr,"test_mark","");
  
- printf("initStr="initStr);
+ printf("initStr=%s",initStr);
  
  ------返回硬件标识
  return "hxk.fsensor";
