@@ -119,9 +119,9 @@ function $(d)
 	return document.getElementById(d);
 }
 
-function hxkXMapRecv(cmd,message)
-{  
- 	if(cmd=="j")
+function xmap_recv(cmd,message)
+{
+  if(cmd=="j")
 	{
 		jj=JSON.parse(message);
 		/*
@@ -152,9 +152,13 @@ function hxkXMapRecv(cmd,message)
 		$("a2").innerHTML=sth[1]+"%";
 		
 		$("a3").innerHTML=jj.water.s[0]+"pv";
-		$("a4").innerHTML=jj.electric.s[0]+"瓦";
-		
+		$("a4").innerHTML=jj.electric.s[0]+"瓦";		
 	}
+}
+
+function hxkXMapRecv(cmd,message)
+{  
+ 	xmap_recv(cmd,message);
 };
 
 sndbtn1.onclick=function(event) {
