@@ -1,0 +1,5 @@
+{
+"devflag":"KG4",
+"init_page":"index.html",
+"msd_load":"KG4-v1.lua"
+}
