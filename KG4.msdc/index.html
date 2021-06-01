@@ -7,7 +7,7 @@
 <style> 
 #chat { width: 97%; }
 .them { font-weight: bold; }
-.them:before { content: 'Recv: '; color:#036; font-size: 12px; }
+.them:before { content: '->'; color:#036; font-size: 12px; }
 #log {
 overflow: auto;
 height: 200px;
@@ -137,7 +137,7 @@ function xmap_scene_result(ret,devflag,devname,scene)
 	h = dt.getHours()+':';
 	m = dt.getMinutes()+':';
 	s = dt.getSeconds(); 
-	str='scene['+h+m+s+'] '+devflag+"/"+devname+"/"+scene;  
+	str='scene['+h+m+s+'] '+ret+"/"++devflag+"/"+devname+"/"+scene;  
 	log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
 	log.scrollTop=log.scrollHeight;
 }
