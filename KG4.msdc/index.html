@@ -70,7 +70,7 @@ padding-left:20px;
         2
       </div>
         <article>
-            <!--<ul id="log"></ul>-->
+            <ul id="log"></ul>
             <hr />
             <input type="button" id="sndbtn1" value="1 路" style="width:100px; height:70px;"/>
             <input type="button" id="sndbtn2" value="2 路" style="width:100px; height:70px;" />
@@ -103,20 +103,20 @@ function $(d)
 	return document.getElementById(d);
 }
 
-function hxkXMapRecv(cmd,message)
+function xmap_recv(cmd,message)
 {  
+	var dt=new Date();
+	h = dt.getHours()+':';
+	m = dt.getMinutes()+':';
+	s = dt.getSeconds(); 
+	str='recv['+h+m+s+'] '+message;  
+	log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
+	log.scrollTop=log.scrollHeight;
+	
  	if(cmd=="j")
 	{
 		jj=JSON.parse(message);
-		/*
-		var dt=new Date();
-		h = dt.getHours()+':';
-		m = dt.getMinutes()+':';
-		s = dt.getSeconds(); 
-		str='['+h+m+s+'] '+message;  
-		log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
-		log.scrollTop=log.scrollHeight;
-		*/
+		
 		b1 = jj.kg[0];
 		b2 = jj.kg[1];
 		b3 = jj.kg[2];
@@ -129,6 +129,18 @@ function hxkXMapRecv(cmd,message)
 				
 	}
 };
+
+
+function xmap_scene(ret,devflag,devname,scene)
+{
+	var dt=new Date();
+	h = dt.getHours()+':';
+	m = dt.getMinutes()+':';
+	s = dt.getSeconds(); 
+	str='scene['+h+m+s+'] '+message;  
+	log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
+	log.scrollTop=log.scrollHeight;
+}
 
 sndbtn1.onclick=function(event) {
 	if(b1)
