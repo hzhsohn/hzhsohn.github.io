@@ -137,7 +137,7 @@ function xmap_scene_result(ret,devflag,devname,scene)
 	h = dt.getHours()+':';
 	m = dt.getMinutes()+':';
 	s = dt.getSeconds(); 
-	str='scene['+h+m+s+'] '+ret+"/"++devflag+"/"+devname+"/"+scene;  
+	str='scene['+h+m+s+'] '+ret+"/"+devflag+"/"+devname+"/"+scene;  
 	log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
 	log.scrollTop=log.scrollHeight;
 }
@@ -148,7 +148,7 @@ sndbtn1.onclick=function(event) {
 	else
 	{xmap_scene("S11","");}
 };
-sndbtn2.onclick=function(event) {	
+sndbtn2.onclick=function(event) {
 	if(b2)
 	{xmap_scene("S20","");}
 	else
@@ -161,7 +161,7 @@ sndbtn3.onclick=function(event) {
 	else
 	{xmap_scene("S31","");}
 };
-sndbtn4.onclick=function(event) {	
+sndbtn4.onclick=function(event) {
 	if(b4)
 	{xmap_scene("S40","");}
 	else
