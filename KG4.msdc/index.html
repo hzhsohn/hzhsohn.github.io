@@ -137,7 +137,7 @@ function xmap_scene(ret,devflag,devname,scene)
 	h = dt.getHours()+':';
 	m = dt.getMinutes()+':';
 	s = dt.getSeconds(); 
-	str='scene['+h+m+s+'] '+message;  
+	str='scene['+h+m+s+'] '+devflag+"/"+devname+"/"+scene;  
 	log.innerHTML =log.innerHTML+'<li class="them">'+str +'</li>';
 	log.scrollTop=log.scrollHeight;
 }
