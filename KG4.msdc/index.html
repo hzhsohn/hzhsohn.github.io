@@ -144,33 +144,33 @@ function xmap_scene(ret,devflag,devname,scene)
 
 sndbtn1.onclick=function(event) {
 	if(b1)
-	{hxkXMapScene("S10","");}
+	{xmap_send("S10","");}
 	else
-	{hxkXMapScene("S11","");}
+	{xmap_send("S11","");}
 };
 sndbtn2.onclick=function(event) {	
 	if(b2)
-	{hxkXMapScene("S20","");}
+	{xmap_send("S20","");}
 	else
-	{hxkXMapScene("S21","");}
+	{xmap_send("S21","");}
 };
 
 sndbtn3.onclick=function(event) {
 	if(b3)
-	{hxkXMapScene("S30","");}
+	{xmap_send("S30","");}
 	else
-	{hxkXMapScene("S31","");}
+	{xmap_send("S31","");}
 };
 sndbtn4.onclick=function(event) {	
 	if(b4)
-	{	hxkXMapScene("S40","");}
+	{xmap_send("S40","");}
 	else
-	{hxkXMapScene("S41","");}
+	{xmap_send("S41","");}
 };
 
 //读取状态
 function init() {
-	hxkXMapSend("state","");
+	xmap_send("state","");
 };
 setTimeout(init,100);
 
